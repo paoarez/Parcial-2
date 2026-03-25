@@ -1,0 +1,100 @@
+import java.util.*;
+
+public class ArregloEstadisticas {
+
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        System.out.print("Cuantos datos son: ");
+        int n = entrada.nextInt();
+        
+        Arreglo arreglo1 = new Arreglo(n);
+        arreglo1.llenarTeclado();
+
+        System.out.println("Arreglo 1: " + arreglo1);
+
+        if (verificarOrden(arreglo1.values))
+            System.out.println("Ordenado");
+        else
+            System.out.println("No ordenado");
+
+
+        System.out.println("Promedio: " + arreglo1.promedio());
+        
+        int mayor;
+        mayor = arreglo1.maximo();
+        System.out.println("El elemento mas grande es " + mayor);
+        
+        int menor;
+        menor = arreglo1.minimo();
+        System.out.println("El elemento mas pequeño es " + menor);
+    }
+
+    public static boolean verificarOrden(int x[]){
+        boolean ordenado = true;
+        for(int i = 0; i < x.length - 1; i++){
+            if (x[i] > x[i+1])
+                ordenado = false;
+        }
+        return ordenado;
+    }
+}
+
+class Arreglo {
+
+    public int[] values;
+
+    public Arreglo(int cantidad) {
+        values = new int[cantidad];
+    }
+
+    public Arreglo(int[] values) {
+        this.values = values;
+    }
+
+    public void llenarAleatorio(int limite) {
+        Random random = new Random();
+        for (int i = 0; i < values.length; i++) {
+            values[i] = random.nextInt(limite);
+        }
+    }
+    
+    public void llenarTeclado(){
+        Scanner entrada = new Scanner(System.in);
+        for (int i = 0; i < values.length; i++) {
+            System.out.print("Da el dato " + i + " : ");
+            values[i] = entrada.nextInt();
+        }
+    }
+    
+    public double promedio() {
+        int suma = 0;
+        for (int i = 0; i < values.length; i++) {
+            suma += values[i];
+        }
+        return (double) suma / values.length;
+    }
+
+    public int maximo() {
+        int max = values[0];
+        for (int i = 1; i < values.length; i++){
+            if(values[i] > max){
+                max = values[i];
+            }
+        }
+        return max;   
+    }
+
+    public int minimo() {
+        int minimo = values[0];
+        for (int i = 1; i < values.length; i++){
+            if (values[i] < minimo){
+                minimo = values[i];
+            }
+        }
+        return minimo; // 👈 corregido
+    }
+
+    public String toString() {
+        return Arrays.toString(values);
+    }
+}
