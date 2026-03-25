@@ -1,0 +1,33 @@
+import java.util.*;
+
+public class SerieE{
+    
+  public static double miFactorial(int valor){
+      double f=1;
+      for (int i = 1; i <= valor; i++) {
+            f = f*i;
+        }
+      return f;
+  }
+    
+  public static double calcularE(int n){
+      int cont = 0;
+      double s = 0;
+      while(cont<=n){
+          s=s+(1/miFactorial(cont));
+          cont++;
+          
+      }
+      return s;
+  }
+  
+  public static void main(String args[]) {
+      Scanner entrada = new Scanner(System.in);
+      int n;
+      System.out.print("Ingresa el valor de n: ");
+      n = entrada.nextInt();
+      //System.out.println("Factorial "+miFActorial(n));
+      double r = calcularE(n);
+      System.out.println("Valor aprox. de E = " +r);
+  }
+}
