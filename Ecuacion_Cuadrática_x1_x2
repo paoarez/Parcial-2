@@ -1,0 +1,30 @@
+//Programa prueba ecuacion
+import java.util.*;
+
+public class MyClass {
+  public static void main(String args[]) {
+    Scanner entrada = new Scanner(System.in);
+    
+    int a,b,c;
+    double x1,x2;
+    
+    System.out.print("Coeficiente a: ");
+    a = entrada.nextInt();
+    System.out.print("Coeficiente b: ");
+    b = entrada.nextInt();
+    System.out.print("Coeficiente c: ");
+    c = entrada.nextInt();
+    
+    double discriminante = b*b - 4*a*c;
+    
+    if(discriminante >= 0){
+        x1 = (-b + Math.sqrt(discriminante)) / (2*a);
+        x2 = (-b - Math.sqrt(discriminante)) / (2*a); 
+        
+        System.out.println("La solucion 1 es: " + x1);
+        System.out.println("La solucion 2 es: " + x2);
+    } else {
+        System.out.println("No hay soluciones reales");
+    }
+  }
+}
