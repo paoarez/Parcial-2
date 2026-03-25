@@ -1,0 +1,20 @@
+import java.text.*;
+import java.text.DecimalFormat;
+
+public class MyClass {
+  public static void main(String args[]) {
+   int x, y;
+   double f;
+   DecimalFormat salida = new DecimalFormat("#.####");
+   System.out.println("x     y     f(x,y)\n");
+   System.out.println("=====================\n");
+   
+   for (x=2; x<=8;x+=2){
+       for(y=6;y<=21;y+=3){
+           f= (Math.pow(x,2)-Math.pow(y,2))/(Math.pow(x,2)+Math.pow(y,2));
+           System.out.println(x+"\t"+y+"\t"+salida.format(f));
+       }
+       System.out.println();
+   }
+  }
+}
